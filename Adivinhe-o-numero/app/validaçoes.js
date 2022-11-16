@@ -1,6 +1,10 @@
 function verificaChute(chute){
     const numero = parseInt(chute);
-
+    if(gameOver(chute)){
+        document.body.innerHTML = `<h1> Game over </h1>
+        <h2>Você que pediu</h2>
+        <button id="jogar-novamente" class="botao_jogar" onclick="reloadPagina()">Jogar novamente</button>`
+    }
     if(chuteInvalido(numero)){
         elementoChute.innerHTML += '<div> Chute inválido </div>'
         return
@@ -21,6 +25,7 @@ function verificaChute(chute){
     if(numeroÉMenor(numero)){
         elementoChute.innerHTML += '<div> O número secreto é menor <i class="fa-solid fa-down-long"></i></div>'
     }
+    
 }
 
 function chuteInvalido(numero){
@@ -44,4 +49,9 @@ function numeroÉMenor(numero){
 
 function reloadPagina(){
     window.location.reload()
+}
+
+function gameOver(chute){
+    return chute === 'game over'
+
 }
